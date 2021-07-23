@@ -1,6 +1,8 @@
 import 'package:chat_app/widgets/chat_detail.dart';
+import 'package:chat_app/widgets/profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
 
 class ChatListPage extends StatefulWidget {
   final String userId;
@@ -12,23 +14,31 @@ class ChatListPage extends StatefulWidget {
 }
 
 class _ChatListPageState extends State<ChatListPage> {
-  var users = [
-    {
-      'name': 'Walid',
-      'department': 'IT',
-    },
-    {'name': 'Asyraf', 'department': 'Finance'},
-    {
-      'name': 'Faiz',
-      'department': 'Marketing',
-    },
-  ];
+  // var users = [
+  //   {
+  //     'name': 'Walid',
+  //     'department': 'IT',
+  //   },
+  //   {'name': 'Asyraf', 'department': 'Finance'},
+  //   {
+  //     'name': 'Faiz',
+  //     'department': 'Marketing',
+  //   },
+  // ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('Chat List Page'),
+          actions: [
+            IconButton(onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage(userId:widget.userId))
+              );
+            }, icon: Icon(Icons.supervised_user_circle))
+          ],
         ),
         body: StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance.collection('user').snapshots(),
@@ -44,6 +54,14 @@ class _ChatListPageState extends State<ChatListPage> {
                       if (documents[position]["id"] != widget.userId) {
                         return ListTile(
                           title: Text(documents[position]["email"]),
+                          onTap: (){
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => ChatDetailPage(
+                              senderId: widget.userId,
+                              receiverId: documents[position]['id']
+                            ))
+                            );
+                          },
                         );
                       } else {
                         return Container();

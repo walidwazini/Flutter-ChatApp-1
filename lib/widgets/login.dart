@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
                   print("Succesful login");
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => ChatListPage(
-                        userId: user!.uid,
+                        userId: user.uid,
                       )));
                 }
                 else{

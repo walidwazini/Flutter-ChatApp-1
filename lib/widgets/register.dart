@@ -43,6 +43,9 @@ class RegisterPage extends StatelessWidget {
                       'id' : user.uid,
                       'createAt' : DateTime.now(),
                       'chattingWith' : null,
+                      'name' : '',
+                      'address' : '',
+                      'phone' : '',
                     });
                   } else {
                     print("Something is wrong!");
