@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:chat_app/widgets/login.dart';
 
 class RegisterPage extends StatelessWidget {
   // const RegisterPage({Key? key}) : super(key: key);
@@ -50,6 +51,10 @@ class RegisterPage extends StatelessWidget {
                   } else {
                     print("Something is wrong!");
                   }
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LoginPage()));
                 },
                 child: Text('Register'),
                 style: TextButton.styleFrom(

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 class ChatListPage extends StatefulWidget {
   final String userId;
-
   ChatListPage({required this.userId});
 
   @override
@@ -68,7 +67,8 @@ class _ChatListPageState extends State<ChatListPage> {
                       }
                     });
               }
-            }));
+            })
+    );
   }
 }
 
