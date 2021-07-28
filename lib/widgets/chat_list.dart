@@ -7,7 +7,9 @@ import 'package:chat_app/widgets/register.dart';
 class ChatListPage extends StatefulWidget {
   final String userId;
   final String email;
-  ChatListPage({required this.userId, required this.email});
+  ChatListPage({
+    required this.userId, required this.email
+  });
 
   @override
   _ChatListPageState createState() => _ChatListPageState();

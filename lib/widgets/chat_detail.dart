@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-
 class ChatDetailPage extends StatefulWidget {
   final String receiverId;
   final String senderId;
@@ -9,8 +8,10 @@ class ChatDetailPage extends StatefulWidget {
   final String senderEmail;
 
   ChatDetailPage({
-    required this.senderId, required this.receiverId,
-    required this.senderEmail, required this.receiverEmail,
+    required this.senderId,
+    required this.receiverId,
+    required this.senderEmail,
+    required this.receiverEmail,
   });
 
   @override
@@ -70,8 +71,11 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                         'idTo': widget.receiverId,
                         'timeStamp':
                             DateTime.now().microsecondsSinceEpoch.toString(),
-                        'content': messageController.text
+                        'content': messageController.text,
+                        'emailFrom' : widget.senderEmail,
+                        'emailTo' : widget.receiverEmail,
                       });
+                      messageController.clear();
                     },
                     child: Text('Send')),
               ],
@@ -91,8 +95,8 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                       itemCount: snapshots.requireData.docs.length,
                       itemBuilder: (context, position) {
                         return ListTile(
-                          title: Text(
-                              snapshots.requireData.docs[position]['idFrom']),
+                          title: Text(snapshots.requireData.docs[position]
+                              ['emailFrom']),
                           subtitle: Text(
                               snapshots.requireData.docs[position]['content']),
                         );

@@ -61,6 +61,7 @@ class RegisterPage extends StatelessWidget {
                     backgroundColor: Colors.deepPurpleAccent,
                     primary: Colors.white),
               ),
+              TextButton(onPressed: (){}, child: Text('Return to Login'))
             ],
           ),
         ));
