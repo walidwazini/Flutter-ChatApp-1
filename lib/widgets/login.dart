@@ -21,6 +21,7 @@ class LoginPage extends StatelessWidget {
             TextField(
               decoration: InputDecoration(hintText: 'Email'),
               controller: emailEditingController,
+              keyboardType: TextInputType.emailAddress,
             ),
             TextField(
               decoration: InputDecoration(hintText: 'Password'),
@@ -37,6 +38,7 @@ class LoginPage extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => ChatListPage(
                         userId: user.uid,
+                        email: user.email!,
                       )));
                 }
                 else{

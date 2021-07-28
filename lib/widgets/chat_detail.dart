@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 class ChatDetailPage extends StatefulWidget {
   final String receiverId;
   final String senderId;
+  final String receiverEmail;
+  final String senderEmail;
 
-  ChatDetailPage({required this.senderId, required this.receiverId});
+  ChatDetailPage({
+    required this.senderId, required this.receiverId,
+    required this.senderEmail, required this.receiverEmail,
+  });
 
   @override
   _ChatDetailPageState createState() => _ChatDetailPageState();

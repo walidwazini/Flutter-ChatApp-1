@@ -2,11 +2,12 @@ import 'package:chat_app/widgets/chat_detail.dart';
 import 'package:chat_app/widgets/profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:chat_app/widgets/register.dart';
 
 class ChatListPage extends StatefulWidget {
   final String userId;
-  ChatListPage({required this.userId});
+  final String email;
+  ChatListPage({required this.userId, required this.email});
 
   @override
   _ChatListPageState createState() => _ChatListPageState();
@@ -57,7 +58,9 @@ class _ChatListPageState extends State<ChatListPage> {
                             Navigator.push(context,
                             MaterialPageRoute(builder: (context) => ChatDetailPage(
                               senderId: widget.userId,
-                              receiverId: documents[position]['id']
+                              receiverId: documents[position]['id'],
+                              senderEmail:widget.email,
+                              receiverEmail:documents[position]['email'],
                             ))
                             );
                           },

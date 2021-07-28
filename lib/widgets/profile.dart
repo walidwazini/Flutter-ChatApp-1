@@ -39,6 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
           TextField(
             decoration: InputDecoration(hintText: 'Email'),
             controller: emailController,
+            keyboardType: TextInputType.emailAddress,
             // Avoid user to change email by themself, need to do authentication
             enabled: false,
           ),
